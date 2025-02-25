@@ -1,4 +1,5 @@
-package com.example.quizcards.feat_android_quiz.intent.model
+package com.example.quizcards.feat_android_quiz.intent
 
-class QuizIntent {
+sealed class QuizIntent {
+    data object FetchQuizData: QuizIntent()
 }
