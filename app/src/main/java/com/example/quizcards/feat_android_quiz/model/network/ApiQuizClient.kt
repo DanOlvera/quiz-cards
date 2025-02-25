@@ -6,7 +6,7 @@ import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
-object QuizClient {
+object ApiQuizClient {
     private val logging = HttpLoggingInterceptor().apply {
         setLevel(HttpLoggingInterceptor.Level.BODY)
     }
@@ -15,12 +15,12 @@ object QuizClient {
         addInterceptor(logging)
     }
 
-    internal val apiService: QuizService by lazy {
+    internal val apiService: ApiQuizService by lazy {
         Retrofit.Builder()
             .baseUrl(ApiUtils.BASE_URL)
             .client(okhttp.build())
             .addConverterFactory(GsonConverterFactory.create())
             .build()
-            .create(QuizService::class.java)
+            .create(ApiQuizService::class.java)
     }
 }
